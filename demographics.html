@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Baseline Characteristics</title>
+
+<script src="site_libs/jquery-1.12.4/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.13/datatables.js"></script>
+<link href="site_libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">SARS-CoV-2 - Boston</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="demographics.html">Demographics Characteristics</a>
+</li>
+<li>
+  <a href="models.html">Summary of Regession Models</a>
+</li>
+<li>
+  <a href="shiny.html">Choropleth Maps</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Baseline Characteristics</h1>
+
+</div>
+
+
+<div id="lab-results" class="section level2">
+<h2>Lab Results</h2>
+<p>Count, mean age, and standard deviation of individuals that received viral polymerase chain reaction (PCR) testing for SARS-CoV-2 in the MGB system between February 1, 2020 and July 25, 2020. All MGB employees and individuals under the age of 18 are excluded. Also includes the population stratified by test results, race, and primary language spoken.</p>
+<div id="htmlwidget-8eda2922d44d0ce123cb" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8eda2922d44d0ce123cb">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14"],["All Patients","PCR Test Negative","PCR Test Positive","All Patients","All Patients","All Patients","All Patients","All Patients","All Patients","All Patients","All Patients","All Patients","All Patients","All Patients"],["All Races","All Races","All Races","White","Black","Hispanic","Asian","Other","Missing","All Races","All Races","All Races","All Races","All Races"],["All Languages","All Languages","All Languages","All Languages","All Languages","All Languages","All Languages","All Languages","All Languages","English","Spanish","Other","Unknown",null],[57865,48026,9839,37172,6250,8818,2117,638,2870,46056,7598,2116,2093,2],[100,83,17,64.24,10.8,15.24,3.66,1.1,4.96,79.59,13.13,3.66,3.62,0],[52.32,52.54,51.23,55.41,50.49,44.58,46.94,46.15,45.43,53.25,47.19,58.93,43.77,78.5],[19.31,19.18,19.89,19.45,17.77,16.31,18.78,18.78,19.54,19.42,16.56,20.59,18.81,17.68]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Cohort<\/th>\n      <th>Race<\/th>\n      <th>Language<\/th>\n      <th>Number of Patients<\/th>\n      <th>Percentage<\/th>\n      <th>Mean Age<\/th>\n      <th>Standard Deviation Age<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="inpatients" class="section level2">
+<h2>Inpatients</h2>
+<p>Count, mean age, and standard deviation of individuals that tested positive for SARS-CoV-2. All MGB employees and individuals under the age of 18 are excluded. Also includes the population stratified by whether patient was hospitalized due to SARS-CoV-2, race, and primary language spoken.</p>
+<pre class="r"><code>DT::datatable(inpatient_table)</code></pre>
+<div id="htmlwidget-eaea7b29fea25021d992" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-eaea7b29fea25021d992">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14"],["All Patients","Non-Inpatient Hospitalization","Inpatient Hospitalization","All Patients","All Patients","All Patients","All Patients","All Patients","All Patients","All Patients","All Patients","All Patients","All Patients","All Patients"],["All Races","All Races","All Races","White","Black","Hispanic","Asian","Other","Missing","All Races","All Races","All Races","All Races","All Races"],["All Languages","All Languages","All Languages","All Languages","All Languages","All Languages","All Languages","All Languages","All Languages","English","Spanish","Other","Unknown",null],[9839,6830,3009,4195,1453,3067,309,112,703,5395,3288,590,565,1],[100,69.42,30.58,42.64,14.77,31.17,3.14,1.14,7.15,54.83,33.42,6,5.74,0.01],[51.23,46.17,62.72,57.06,51.94,44.14,52.12,46.58,46.32,54.46,45.21,61.58,44.61,66],[19.89,18.14,18.9,21.08,18.16,15.56,19.81,20.11,21.52,20.9,15.64,20.12,20.25,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Cohort<\/th>\n      <th>Race<\/th>\n      <th>Language<\/th>\n      <th>Number of Patients<\/th>\n      <th>Percentage<\/th>\n      <th>Mean Age<\/th>\n      <th>Standard Deviation Age<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="death" class="section level2">
+<h2>Death</h2>
+<p>Count, mean age, and standard deviation of individuals that were hospitilized due to SARS-CoV-2. All MGB employees and individuals under the age of 18 are excluded. Also includes the population stratified by whether patient died due to SARS-CoV-2, race, and primary language spoken.</p>
+<pre class="r"><code>DT::datatable(death_table)</code></pre>
+<div id="htmlwidget-223563cea3a9c1c0528a" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-223563cea3a9c1c0528a">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14"],["All Patients","No Death due to COVID","Death due to COVID","All Patients","All Patients","All Patients","All Patients","All Patients","All Patients","All Patients","All Patients","All Patients","All Patients","All Patients"],["All Races","All Races","All Races","White","Black","Hispanic","Asian","Other","Missing","All Races","All Races","All Races","All Races","All Races"],["All Languages","All Languages","All Languages","All Languages","All Languages","All Languages","All Languages","All Languages","All Languages","English","Spanish","Other","Unknown",null],[3009,2485,524,1526,522,706,123,41,91,1852,825,279,52,1],[100,82.59,17.41,50.71,17.35,23.46,4.09,1.36,3.02,61.55,27.42,9.27,1.73,0.03],[62.72,59.7,77.05,67.76,61.25,53.29,62.35,59.68,61.66,65.35,53.98,71.99,58.12,66],[18.9,18.5,13.42,18.31,17.47,16.59,19.98,21.8,20.82,18.56,16.71,16.87,22.72,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Cohort<\/th>\n      <th>Race<\/th>\n      <th>Language<\/th>\n      <th>Number of Patients<\/th>\n      <th>Percentage<\/th>\n      <th>Mean Age<\/th>\n      <th>Standard Deviation Age<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[4,5,6,7]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

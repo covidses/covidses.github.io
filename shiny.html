@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Choropleth Maps of Census Tract-Level Variables</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">SARS-CoV-2 - Boston</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="demographics.html">Demographics Characteristics</a>
+</li>
+<li>
+  <a href="models.html">Summary of Regession Models</a>
+</li>
+<li>
+  <a href="shiny.html">Choropleth Maps</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="section-header">
+
+
+
+<h1 class="title toc-ignore">Choropleth Maps of Census Tract-Level Variables</h1>
+
+</div>
+
+
+<div id="section-census-tract-level-variables" class="section level2">
+<h2>Census Tract-Level Variables</h2>
+<p>We show choropleth maps based on the MGB patient population used in this analysis which is aggregated on a census tract-level. We also show sociodemographic variables based on the 2014-2018 American Community Survey. Population of census tract is based on 2014-2018 American Community Survey (survey question B01003).</p>
+<div id="section-variables-based-on-mgb-patient-population" class="section level3">
+<h3>Variables based on MGB Patient Population</h3>
+<ul>
+<li>COVID Positive Per 1000 - Number of MGB Patients with a positive PCR test for SARS-CoV-2 per 1000 individuals in census tract.</li>
+<li>Inpatient due to COVID Per 1000 - Number of MGB patients hospitialized due to SARS-CoV-2 per 1000 individuals in census tract.</li>
+<li>Death due to COVID Per 1000 - Number of Deaths due to SARS-CoV-2 per 1000 individuals in census tract.</li>
+<li>Individuals Tested for COVID - Number of MGB Patients given a PCR test for SARS-CoV-2 in census tract.</li>
+<li>COVID Testing Per 1000 - Number of MGB Patients tested for SARS-CoV-2 per 1000 individuals in census tract.</li>
+</ul>
+</div>
+<div id="section-variables-based-on-2014-2018-american-community-survey" class="section level3">
+<h3>Variables based on 2014-2018 American Community Survey</h3>
+<ul>
+<li>Population Count - Total population count of census tract.</li>
+<li>% White - Percentage of individuals identifying as (non-hispanic) white in census tract.</li>
+<li>% Black - Percentage of individuals identifying as (non-hispanic) black in census tract.</li>
+<li>% Hispanic - Percentage of individuals identifying as hispanic in census tract.</li>
+<li>% Asian - Percentage of individuals identifying as (non-hispanic) asian in census tract.</li>
+<li>% Over 65 - Percentage of individuals over the age of 65 in census tract.</li>
+<li>Median Household Income - Median household income of census tract.</li>
+<li>% Below Poverty In Census Tract - Percentage of individuals that live below the poverty line in census tract.</li>
+<li>% College Graduates In Census Tract - Percentage of individuals with a 4 year degree or higher in census tract.</li>
+<li>% No HS Diploma - Percentage of individuals with no high school diploma in census tract.</li>
+<li>% Unemployed - Percentage of unemployed individuals in census tract.</li>
+<li>% Households More than 1 occupant per Room - Percentage of households with (on average) more than 1 occupant per room in census tract.</li>
+<li>% Households More than 1.5 occupant per Room - Percentage of households with (on average) more than 1.5 occupants per room in census tract.</li>
+<li>% Households More than 2 occupant per Room - Percentage of households with (on average) more than 2 occupants per room in census tract.</li>
+<li>% with Private Insurance - Percentage of individuals with private insurance in census tract.</li>
+<li>% with Medicare - Percentage of individuals with Medicare insurance in census tract.</li>
+<li>% with Medicaid - Percentage of individuals with Medicaid insurance in census tract.</li>
+<li>Land Area (km^2) - Land area of census tract in square kilometers.</li>
+<li>% Commute via Public Transporation - Percentage of individuals that commute via public transporation in census tract</li>
+<li>% Foreign Born - Percentage of individuals that are foreign born in census tract.</li>
+<li>% Essential Workers - Percentage of individuals deemed as essential workers in census tract.</li>
+<li>% Household - 5+ members - Percentage of households with 5 plus members in census tract.</li>
+<li>% Household - 6+ members - Percentage of households with 6 plus members in census tract.</li>
+<li>% Household - 7+ members - Percentage of households with 7 plus members in census tract.</li>
+</ul>
+<iframe height="800" width="100%" frameborder="no" src="https://chiragjp.shinyapps.io/covid_boston_map/">
+</iframe>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("section-TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
