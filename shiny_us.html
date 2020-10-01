@@ -305,19 +305,8 @@ $(document).ready(function () {
 
 <div id="section-census-tract-level-variables" class="section level2">
 <h2>Census Tract-Level Variables</h2>
-<p>We show choropleth maps based on the MGB patient population used in this analysis which are aggregated on a census tract-level. We also show sociodemographic variables based on the 2014-2018 American Community Survey. Population of census tract is based on 2014-2018 American Community Survey (survey question B01003). Census tracts with at least 5 patients tested for SARS-CoV-2 are displayed.</p>
-<div id="section-variables-based-on-mgb-patient-population" class="section level3">
-<h3>Variables based on MGB Patient Population</h3>
-<ul>
-<li>COVID Positive Per 1000 - Number of MGB Patients with a positive PCR test for SARS-CoV-2 per 1000 individuals in census tract.</li>
-<li>Inpatient due to COVID Per 1000 - Number of MGB patients hospitialized due to SARS-CoV-2 per 1000 individuals in census tract.</li>
-<li>Death due to COVID Per 1000 - Number of Deaths due to SARS-CoV-2 per 1000 individuals in census tract.</li>
-<li>Individuals Tested for COVID - Number of MGB Patients given a PCR test for SARS-CoV-2 in census tract.</li>
-<li>COVID Testing Per 1000 - Number of MGB Patients tested for SARS-CoV-2 per 1000 individuals in census tract.</li>
-<li>COVID Positive % - Percentage of MGB patients with a positive PCR test for SARS-CoV-2 among the tested MGB population living in the census tract.</li>
-</ul>
-<p><em>Note: In order to protect patient privacy we give a numerical range and not an exact value for COVID Positive Per 1000, Inpatient due to COVID Per 1000, Death due to COVID Per 1000, and COVID Positive %.</em></p>
-</div>
+<p>We show choropleth maps of Census Tract-Level Variables for census tracts across the United States. Census Tract-Level Variables based on the 2014-2018 American Community Survey. Population of census tract is based on 2014-2018 American Community Survey (survey question B01003). In order to limit memory usage a user can only view Census Tract-Level Variables for one state at a time.</p>
+<p><em>Note: Some larger states such as California and Texas may take a little time to load.</em></p>
 <div id="section-variables-based-on-2014-2018-american-community-survey" class="section level3">
 <h3>Variables based on 2014-2018 American Community Survey</h3>
 <ul>
@@ -346,7 +335,7 @@ $(document).ready(function () {
 <li>% Household - 6+ members - Percentage of households with 6 plus members in census tract.</li>
 <li>% Household - 7+ members - Percentage of households with 7 plus members in census tract.</li>
 </ul>
-<iframe height="800" width="100%" frameborder="no" src="https://chiragjp.shinyapps.io/covid_boston_map/">
+<iframe height="800" width="100%" frameborder="no" src="http://chiragjp.shinyapps.io/covid_us_map/">
 </iframe>
 </div>
 </div>
